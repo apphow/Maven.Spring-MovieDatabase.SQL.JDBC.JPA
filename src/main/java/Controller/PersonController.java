@@ -25,6 +25,15 @@ public class PersonController {
     @GetMapping("/all")
     public List<Person> findAll() { return personService.findAll();}
 
+    @GetMapping("/lastName")
+    public ResponseEntity<?> findByLastName(@RequestParam String Last_Name){
+        return new ResponseEntity<>(personService.findByLastName(Last_Name), HttpStatus.OK);   }
+
+    @GetMapping("/firstName")
+    public ResponseEntity findByFirstName(@RequestParam String First_Name){
+        return new ResponseEntity<>(personService.findByFirstName(First_Name), HttpStatus.OK);
+    }
+
     @PostMapping("/person")
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
         Person newPerson = personService.save(person);
