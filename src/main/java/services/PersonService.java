@@ -32,6 +32,12 @@ public class PersonService {
         return this.personRepository.findByHome_Id(id);
     }
 
+    public Optional<Person> delete(int id) {
+        Optional<Person> person = findByHome_Id(id);
+        personRepository.delete(person);
+        return person;
+    }
+
     public List<Person> findAll() {
         return this.personRepository.findAll();
     }

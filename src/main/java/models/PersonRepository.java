@@ -16,5 +16,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
         Optional<Person> findByHome_Id(int findByHome_id);
 
         Object findByFirst_Name(String firstName);
+
+        void delete(Optional<Person> person);
 }
  
