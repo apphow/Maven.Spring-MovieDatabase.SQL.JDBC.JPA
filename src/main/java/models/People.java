@@ -1,11 +1,13 @@
 package models;
 
+import org.h2.server.web.WebServlet;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Optional;
 
 @Entity
@@ -73,6 +75,21 @@ public class People {
 
     public Optional<ResponseEntity<Object>> map(Object o) {
         return null;
+    }
+
+    @SpringBootApplication
+    public static class PersistenceStarterApplication {
+
+        public static void main(String[] args) {
+            SpringApplication.run(PersistenceStarterApplication.class, args);
+        }
+
+        @Bean
+        ServletRegistrationBean h2servletRegistration(){
+            ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
+            registrationBean.addUrlMappings("/console/*");
+            return registrationBean;
+        }
     }
 }
 

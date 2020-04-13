@@ -6,28 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-class PeopleService {
+public class PersonService {
 
     private PeopleRepository peopleRepository;
 
+    public PersonService(){}
+
     @Autowired
-    public PeopleService(PeopleRepository peopleRepository) {
+    public PersonService(PeopleRepository peopleRepository) {
         this.peopleRepository = peopleRepository;
     }
 
-    public Optional<People> findByColor(String color) {
-        return this.peopleRepository.findByColor(color);
+    public List<People> findByLastName(String lastName) {
+        return this.peopleRepository.findByLast_Name(lastName);
     }
 
-    public People findByMake(String make) {
-        return (People) this.peopleRepository.findByMake(make);
+    public People findByFirstName(String firstName) {
+        return (People) this.peopleRepository.findByFirst_Name(firstName);
     }
 
-    public List<People> findByHMake(String make) {
-        return this.peopleRepository.findByMake(make);
+    public List<People> findByHome_Id(String findByHome_Id) {
+        return this.peopleRepository.findByHome_Id(findByHome_Id);
     }
 
     public List<People> findAll() {
