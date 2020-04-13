@@ -28,6 +28,17 @@ public class PersonController {
         return "This works";
     }
 
+    @PostMapping("/person")
+    public  ResponseEntity<Person> createPerson(@RequestBody Person person) {
+        Person newPerson = personService.save(person);
+        try {
+            return ResponseEntity.created(new URI("/person/" + newPerson.getHome_ID()))
+                    .body(newPerson);
+        } catch(URISyntaxException e) {
+            return ResponseEntity.status(HttpStatus.MULTI_STATUS.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @PutMapping(value="/person/{id}")
     public ResponseEntity<?> updatePerson(@RequestBody Person person,
                                        @PathVariable int id){
