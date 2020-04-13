@@ -9,10 +9,10 @@ import services.PersonService;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
-//https://github.com/apphow/Demo-Simple-Spring-Web-MVC/tree/master/src/main/java/com/zipcode/demo/WebMVC
-@RestController
+//https://github.com/froilan-miranda/Demo-Simple-Spring-Web-MVC@RestController
 public class PersonController {
 
     private PersonService personService;
@@ -23,9 +23,7 @@ public class PersonController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Iterable<Person>> getallPersons(@PathVariable int id) {
-        return new ResponseEntity<>(personService.findAll(), HttpStatus.OK);
-    }
+    public List<Person> findAll() { return personService.findAll();}
 
     @PostMapping("/person")
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
