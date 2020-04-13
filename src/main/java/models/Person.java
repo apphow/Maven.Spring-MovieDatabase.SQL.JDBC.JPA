@@ -1,17 +1,15 @@
 package models;
 
-import org.h2.server.web.WebServlet;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Optional;
 
 @Entity
-public class People {
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,15 +20,15 @@ public class People {
     private String Mobile;
     private String Birthday;
 
-    public People() {
+    public Person() {
     }
 
-    public People(String last_Name, String first_Name, String mobile, String birthday, int home_ID) {
-        Last_Name = last_Name;
-        First_Name = first_Name;
-        Mobile = mobile;
-        Birthday = birthday;
-        Home_ID = home_ID;
+    public Person(String last_Name, String first_Name, String mobile, String birthday, int home_ID) {
+        this.Last_Name = last_Name;
+        this.First_Name = first_Name;
+        this.Mobile = mobile;
+        this.Birthday = birthday;
+        this.Home_ID = home_ID;
     }
 
     public String getLast_Name() {
@@ -77,19 +75,6 @@ public class People {
         return null;
     }
 
-    @SpringBootApplication
-    public static class PersistenceStarterApplication {
-
-        public static void main(String[] args) {
-            SpringApplication.run(PersistenceStarterApplication.class, args);
-        }
-
-        @Bean
-        ServletRegistrationBean h2servletRegistration(){
-            ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
-            registrationBean.addUrlMappings("/console/*");
-            return registrationBean;
-        }
     }
-}
+
 

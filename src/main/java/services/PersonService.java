@@ -1,41 +1,42 @@
 package services;
 
-import models.People;
-import models.PeopleRepository;
+import models.Person;
+import models.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonService {
 
-    private PeopleRepository peopleRepository;
+    private PersonRepository personRepository;
 
     public PersonService(){}
 
     @Autowired
-    public PersonService(PeopleRepository peopleRepository) {
-        this.peopleRepository = peopleRepository;
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
-    public List<People> findByLastName(String lastName) {
-        return this.peopleRepository.findByLast_Name(lastName);
+    public List<Person> findByLastName(String lastName) {
+        return this.personRepository.findByLast_Name(lastName);
     }
 
-    public People findByFirstName(String firstName) {
-        return (People) this.peopleRepository.findByFirst_Name(firstName);
+    public Person findByFirstName(String firstName) {
+        return (Person) this.personRepository.findByFirst_Name(firstName);
     }
 
-    public List<People> findByHome_Id(String findByHome_Id) {
-        return this.peopleRepository.findByHome_Id(findByHome_Id);
+    public Optional<Person> findByHome_Id(int id) {
+        return this.personRepository.findByHome_Id(id);
     }
 
-    public List<People> findAll() {
-        return this.peopleRepository.findAll();
+    public List<Person> findAll() {
+        return this.personRepository.findAll();
     }
 
-    public People save(People people) {
-        return this.peopleRepository.save(people);
+    public Person save(Person person) {
+        return this.personRepository.save(person);
     }
 }

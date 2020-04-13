@@ -7,14 +7,14 @@ Proceed through the sections below, testing out the queries shown and observing 
 Select Clause  
 From Clause
 
-#### Insert people into People table
+#### Insert person into People table
 
 ```SQL
 INSERT INTO PEOPLE (LAST_NAME, FIRST_NAME, MOBILE, BIRTHDAY)
 VALUES ('Smith', 'John', '230-4293', '1973-01-23');
 ```
 
-Following the example, insert at least three other people into the table.
+Following the example, insert at least three other person into the table.
 
 #### Selecting all rows from table 
 
@@ -39,14 +39,14 @@ UPDATE PEOPLE SET MOBILE = '152-9854' WHERE LAST_NAME = 'Smith';
 Update multiple columns with multiple conditions
 
 ```SQL
-UPDATE people SET birthday = '1955-01-25' 
+UPDATE person SET birthday = '1955-01-25' 
 WHERE 
 	last_name = 'Smith' 
 	AND id = 4;
 ```
 
 ```SQL
-UPDATE people SET mobile = '333-3333', last_name = 'Johnson' 
+UPDATE person SET mobile = '333-3333', last_name = 'Johnson' 
 WHERE first_name = 'Noelle' OR first_name = 'Raj';
 ```
 
@@ -99,24 +99,24 @@ SELECT LAST_NAME FROM PEOPLE;
 ```
 
 ```SQL
-INSERT INTO people (FIRST_NAME, LAST_NAME, MOBILE) 
+INSERT INTO person (FIRST_NAME, LAST_NAME, MOBILE) 
 VALUES ('Otto', 'Von Count', '656-6548');
 ```
 
 ```SQL
-SELECT CONCAT(FIRST_NAME, LAST_NAME) FROM people
+SELECT CONCAT(FIRST_NAME, LAST_NAME) FROM person
 WHERE LAST_NAME = 'Smith'
 ```
 
 ```SQL
 SELECT CONCAT(first_name, ' ', last_name) 
-FROM people 
+FROM person 
 WHERE last_name = 'Smith'
 ```
 
 ```SQL
 SELECT CONCAT_WS(' ',first_name, last_name, mobile) 
-FROM people WHERE last_name= 'Smith'
+FROM person WHERE last_name= 'Smith'
 ```
 
 ```SQL
@@ -142,15 +142,15 @@ SELECT string, LENGTH(string), CHAR_LENGTH(string) FROM length_test
 ## Compare
 
 ```SQL
-SELECT first_name, last_name, YEAR(birthday) FROM people WHERE birthday >= '1970-07-06' AND birthday<='1987-07-06';
+SELECT first_name, last_name, YEAR(birthday) FROM person WHERE birthday >= '1970-07-06' AND birthday<='1987-07-06';
 ```
 
 ```SQL
-SELECT first_name, birthday FROM people WHERE first_name='Thomas' OR first_name='Raj' OR first_name='Sheeri';
+SELECT first_name, birthday FROM person WHERE first_name='Thomas' OR first_name='Raj' OR first_name='Sheeri';
 ```
 
 ```SQL
-SELECT first_name, birthday FROM people WHERE first_name IN ('Noelle', 'Thomas', 'Raj');
+SELECT first_name, birthday FROM person WHERE first_name IN ('Noelle', 'Thomas', 'Raj');
 ```
 
 #### Wild Cards
@@ -160,15 +160,15 @@ SELECT first_name FROM PEOPLE WHERE RIGHT(first_name,1)='e';
 ```
 
 ```SQL
-SELECT first_name FROM people WHERE first_name LIKE '%j'; 
+SELECT first_name FROM person WHERE first_name LIKE '%j'; 
 ```
 
 ```SQL
-SELECT first_name FROM people WHERE first_name LIKE '%o%';
+SELECT first_name FROM person WHERE first_name LIKE '%o%';
 ```
 
 ```SQL
-SELECT first_name FROM people WHERE first_name NOT LIKE '%o%';
+SELECT first_name FROM person WHERE first_name NOT LIKE '%o%';
 ```
 
 ```SQL
@@ -176,7 +176,7 @@ SELECT COUNT(*) FROM PEOPLE
 ```
 
 ```SQL
-SELECT last_name, COUNT(*) FROM people GROUP BY last_name;
+SELECT last_name, COUNT(*) FROM person GROUP BY last_name;
 ```
 
 ```SQL
@@ -184,51 +184,51 @@ SELECT last_name, GROUP_CONCAT(mobile) FROM PEOPLE GROUP BY last_name;
 ```
 
 ```SQL
-SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM people GROUP BY last_name;
+SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM person GROUP BY last_name;
 ```
 
 ```SQL
-SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM people GROUP BY last_name  HAVING COUNT(*)>1;
+SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM person GROUP BY last_name  HAVING COUNT(*)>1;
 ```
 
 ```SQL
-SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM people WHERE last_name != 'Cabral' GROUP BY last_name  HAVING COUNT(*)>1;
+SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM person WHERE last_name != 'Cabral' GROUP BY last_name  HAVING COUNT(*)>1;
 ```
 
 #### Sorting 
 
 ```SQL
-SELECT first_name, birthday FROM people ORDER BY birthday;
+SELECT first_name, birthday FROM person ORDER BY birthday;
 ```
 
 ```SQL
-SELECT first_name, birthday FROM people ORDER BY birthday DESC;
+SELECT first_name, birthday FROM person ORDER BY birthday DESC;
 ```
 
 ```SQL
-SELECT first_name, last_name FROM people ORDER BY last_name, first_name;
+SELECT first_name, last_name FROM person ORDER BY last_name, first_name;
 ```
 
 ```SQL
-SELECT first_name, birthday FROM people ORDER BY birthday DESC LIMIT 3;
+SELECT first_name, birthday FROM person ORDER BY birthday DESC LIMIT 3;
 ```
 
 ```SQL
-SELECT first_name, MONTHNAME(birthday) as mon, birthday FROM people ORDER BY MONTH(birthday);
+SELECT first_name, MONTHNAME(birthday) as mon, birthday FROM person ORDER BY MONTH(birthday);
 ```
 
 ```SQL
-SELECT last_name, COUNT(*) FROM  people GROUP BY last_name;
+SELECT last_name, COUNT(*) FROM  person GROUP BY last_name;
 ```
 
 ```SQL
-SELECT last_name, COUNT(*) FROM  people GROUP BY last_name ORDER BY NULL;
+SELECT last_name, COUNT(*) FROM  person GROUP BY last_name ORDER BY NULL;
 ```
 
 ## Inserting and Replacing Records
 
 ```SQL
-INSERT INTO people (first_name, last_name, birthday, home_id)
+INSERT INTO person (first_name, last_name, birthday, home_id)
 	VALUES
 	('John', 'Smith', '1998-04-07', 4),
 	('Maya', 'Wasserman' , NULL, 4),
@@ -238,15 +238,15 @@ INSERT INTO people (first_name, last_name, birthday, home_id)
 #### Replace
 
 ```SQL
-DELETE FROM people WHERE first_name='Maya';
+DELETE FROM person WHERE first_name='Maya';
 ```
 
 ```SQL
-SELECT * FROM people;
+SELECT * FROM person;
 ```
 
 ```SQL
-MERGE INTO people (first_name, last_name, birthday, home_id)
+MERGE INTO person (first_name, last_name, birthday, home_id)
 	VALUES
 	('John', 'Sharma', '1998-04-07', 1),
 	('Paul', 'Sharma', '1996-05-27', 4),
@@ -257,13 +257,13 @@ MERGE INTO people (first_name, last_name, birthday, home_id)
 ## JOIN
 
 ```SQL
-INSERT INTO people (first_name, last_name, birthday)
+INSERT INTO person (first_name, last_name, birthday)
 	VALUES ('Eli', 'Kramer', '1984-01-15');
 ```
 	
 	
 ```SQL
-SELECT * FROM people;
+SELECT * FROM person;
 ```
 
 ```SQL
@@ -293,13 +293,13 @@ WHERE p.first_name  LIKE '%e%'
 ##### Exercise:
 
 Devise a report
-	show all the people in your address table
+	show all the person in your address table
 	only if you know their birthday
 	show name, address and birthday
 	order by month, so January birthdays are first
 
 Devise a report
-	Output all information for all people and their home information
+	Output all information for all person and their home information
 
 
 	

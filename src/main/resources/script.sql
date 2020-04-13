@@ -42,7 +42,7 @@ VALUES ('Smith', 'John', '230-4293', '1973-01-23');
 
 SELECT * FROM PEOPLE;
 
-ALTER TABLE people
+ALTER TABLE person
     ADD PRIMARY KEY(LAST_NAME);
 
 UPDATE PEOPLE SET ID = 7 WHERE FIRST_NAME = 'John';
@@ -51,7 +51,7 @@ UPDATE PEOPLE SET MOBILE = '152-9854' WHERE LAST_NAME = 'Smith';
 
 UPDATE PEOPLE SET ID = 4 WHERE LAST_NAME = 'TONY';
 
-UPDATE people SET mobile = '333-3333', last_name = 'Johnson'
+UPDATE person SET mobile = '333-3333', last_name = 'Johnson'
 WHERE first_name = 'Noelle' OR first_name = 'Raj';
 
 SELECT * FROM PEOPLE;
@@ -76,18 +76,18 @@ SELECT REPLACE(LAST_NAME, 'a', '1') FROM PEOPLE;
 
 SELECT LAST_NAME FROM PEOPLE;
 
-INSERT INTO people (FIRST_NAME, LAST_NAME, MOBILE)
+INSERT INTO person (FIRST_NAME, LAST_NAME, MOBILE)
 VALUES ('Otto', 'Von Count', '656-6548');
 
-SELECT CONCAT(FIRST_NAME, LAST_NAME) FROM people
+SELECT CONCAT(FIRST_NAME, LAST_NAME) FROM person
 WHERE LAST_NAME = 'Smith';
 
 SELECT CONCAT(first_name, ' ', last_name)
-FROM people
+FROM person
 WHERE last_name = 'Smith';
 
 SELECT CONCAT_WS(' ',first_name, last_name, mobile)
-FROM people WHERE last_name= 'Smith';
+FROM person WHERE last_name= 'Smith';
 
 SELECT HOMENUMBER, LEFT(HOMENUMBER, 3), RIGHT(HOMENUMBER, 2) FROM HOME;
 
@@ -99,61 +99,61 @@ INSERT INTO length_test VALUES ('$'),('€');
 
 SELECT string, LENGTH(string), CHAR_LENGTH(string) FROM length_test;
 
-SELECT first_name, last_name, YEAR(birthday) FROM people WHERE birthday >= '1970-07-06' AND birthday<='1987-07-06';
+SELECT first_name, last_name, YEAR(birthday) FROM person WHERE birthday >= '1970-07-06' AND birthday<='1987-07-06';
 
-SELECT first_name, birthday FROM people WHERE first_name='Thomas' OR first_name='Raj' OR first_name='Sheeri';
+SELECT first_name, birthday FROM person WHERE first_name='Thomas' OR first_name='Raj' OR first_name='Sheeri';
 
-SELECT first_name, birthday FROM people WHERE first_name IN ('Noelle', 'Thomas', 'Raj');
+SELECT first_name, birthday FROM person WHERE first_name IN ('Noelle', 'Thomas', 'Raj');
 
 
 SELECT first_name FROM PEOPLE WHERE RIGHT(first_name,1)='e';
 
-SELECT first_name FROM people WHERE first_name LIKE '%j';
+SELECT first_name FROM person WHERE first_name LIKE '%j';
 
-SELECT first_name FROM people WHERE first_name LIKE '%o%';
+SELECT first_name FROM person WHERE first_name LIKE '%o%';
 
-SELECT first_name FROM people WHERE first_name NOT LIKE '%o%';
+SELECT first_name FROM person WHERE first_name NOT LIKE '%o%';
 
 SELECT COUNT(*) FROM PEOPLE;
 
-SELECT last_name, COUNT(*) FROM people GROUP BY last_name;
+SELECT last_name, COUNT(*) FROM person GROUP BY last_name;
 
 SELECT last_name, GROUP_CONCAT(mobile) FROM PEOPLE GROUP BY last_name;
 
-SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM people GROUP BY last_name;
+SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM person GROUP BY last_name;
 
-SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM people GROUP BY last_name  HAVING COUNT(*)>1;
+SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM person GROUP BY last_name  HAVING COUNT(*)>1;
 
-SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM people WHERE last_name != 'Cabral' GROUP BY last_name  HAVING COUNT(*)>1;
-
-
-SELECT first_name, birthday FROM people ORDER BY birthday;
-
-SELECT first_name, birthday FROM people ORDER BY birthday DESC;
-
-SELECT first_name, last_name FROM people ORDER BY last_name, first_name;
-
-SELECT first_name, birthday FROM people ORDER BY birthday DESC LIMIT 3;
-
-SELECT first_name, MONTHNAME(birthday) as mon, birthday FROM people ORDER BY MONTH(birthday);
-
-SELECT last_name, COUNT(*) FROM  people GROUP BY last_name;
-
-SELECT last_name, COUNT(*) FROM  people GROUP BY last_name ORDER BY NULL;
+SELECT last_name, GROUP_CONCAT(mobile SEPARATOR ' and ') FROM person WHERE last_name != 'Cabral' GROUP BY last_name  HAVING COUNT(*)>1;
 
 
-INSERT INTO people (first_name, last_name, birthday, home_id)
+SELECT first_name, birthday FROM person ORDER BY birthday;
+
+SELECT first_name, birthday FROM person ORDER BY birthday DESC;
+
+SELECT first_name, last_name FROM person ORDER BY last_name, first_name;
+
+SELECT first_name, birthday FROM person ORDER BY birthday DESC LIMIT 3;
+
+SELECT first_name, MONTHNAME(birthday) as mon, birthday FROM person ORDER BY MONTH(birthday);
+
+SELECT last_name, COUNT(*) FROM  person GROUP BY last_name;
+
+SELECT last_name, COUNT(*) FROM  person GROUP BY last_name ORDER BY NULL;
+
+
+INSERT INTO person (first_name, last_name, birthday, home_id)
 VALUES
 ('John', 'Smith', '1998-04-07', 4),
 ('Maya', 'Wasserman' , NULL, 4),
 ('Paul', 'Thompson', '1996-05-27', 1);
 
-SELECT * FROM people;
+SELECT * FROM person;
 
-INSERT INTO people (first_name, last_name, birthday)
+INSERT INTO person (first_name, last_name, birthday)
 VALUES ('Eli', 'Kramer', '1984-01-15');
 
-SELECT * FROM people;
+SELECT * FROM person;
 
 SELECT * FROM home;
 

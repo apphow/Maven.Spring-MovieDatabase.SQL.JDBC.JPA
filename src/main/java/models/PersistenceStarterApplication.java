@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 public class PersistenceStarterApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(People.PersistenceStarterApplication.class);
+        SpringApplication.run(models.PersistenceStarterApplication.class, args);
     }
 
     @Bean
@@ -19,5 +19,4 @@ public class PersistenceStarterApplication {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
-
 }

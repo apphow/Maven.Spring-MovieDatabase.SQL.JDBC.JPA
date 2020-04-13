@@ -50,23 +50,23 @@ Support the following operations:
 - Add a `Person` to the database
 - Update an existing `Person` in the database
 - Remove a person from the database
-- remove a list of people from the database
-- find all people with a particular first name, last name, or birthdate
+- remove a list of person from the database
+- find all person with a particular first name, last name, or birthdate
 - Find a single person by ID
-- Generate a map of surnames to lists of people with that surname
+- Generate a map of surnames to lists of person with that surname
 - Generate a map of first names to the number of times they occur.
 
 Create the following REST endpoints to interact with the application. You can use postman to confirm your program's behavior.
 
- - `POST` `/people` -- create a person
- - `PUT` `/people/{id}` -- update person with `id`. 404 error if that person doesn't exist yet
- - `GET` `/people/{id}` -- get the person with the specified ID
- - `DELETE` `/people/{id}` -- Delete the person with the specified ID
- - `GET` `/people` -- get all people in the database
- - `GET` `/people/reverselookup/{mobileNumber}` -- find all people with the specified mobile number
- - `GET` `/people/surname/{lastName}` -- Find all people with a particular last name
- - `GET` `/people/surname` -- Get the result of the surname report above
- - `GET` `/people/firstname/stats` -- Get the report of first name frequencies
+ - `POST` `/person` -- create a person
+ - `PUT` `/person/{id}` -- update person with `id`. 404 error if that person doesn't exist yet
+ - `GET` `/person/{id}` -- get the person with the specified ID
+ - `DELETE` `/person/{id}` -- Delete the person with the specified ID
+ - `GET` `/person` -- get all person in the database
+ - `GET` `/person/reverselookup/{mobileNumber}` -- find all person with the specified mobile number
+ - `GET` `/person/surname/{lastName}` -- Find all person with a particular last name
+ - `GET` `/person/surname` -- Get the result of the surname report above
+ - `GET` `/person/firstname/stats` -- Get the report of first name frequencies
  
 #### Homes and People 
 There is another table in the data base named home that consist of the following
@@ -102,14 +102,14 @@ Support the following operations:
 - Find a home by home number
 - Find a home by address
 - Find a home by person id
-- Generate a list of people that live in a home
+- Generate a list of person that live in a home
 
 
 
-List all of the homes that have more that one person that live there. Group people by the home that they 
+List all of the homes that have more that one person that live there. Group person by the home that they 
 live in 
 
-List all of the people that live a the address _11 Essex Dr.Farmingdale, NY 11735_
+List all of the person that live a the address _11 Essex Dr.Farmingdale, NY 11735_
  
 Create a query to update a person's home
 
