@@ -45,4 +45,8 @@ public class PersonService {
     public Person save(Person person) {
         return this.personRepository.save(person);
     }
+
+    public Object findAllByMobileNumber(String mobileNumber) {
+        return this.personRepository.findByMobileNumber();
+    }
 }

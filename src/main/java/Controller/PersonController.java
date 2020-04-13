@@ -34,6 +34,11 @@ public class PersonController {
         return new ResponseEntity<>(personService.findByFirstName(First_Name), HttpStatus.OK);
     }
 
+    @GetMapping("/reverseLookup")
+    public ResponseEntity<?> reverseLookup(String mobileNumber) {
+        return new ResponseEntity<>(personService.findAllByMobileNumber(mobileNumber), HttpStatus.OK);
+    }
+
     @PostMapping("/person")
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
         Person newPerson = personService.save(person);
@@ -78,10 +83,7 @@ public class PersonController {
     public ResponseEntity<Person> deletePerson(@PathVariable int id) {
         personService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
-
-
 }
 
 

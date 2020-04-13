@@ -18,5 +18,7 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
         Object findByFirst_Name(String firstName);
 
         void delete(Optional<Person> person);
+
+        Object findByMobileNumber();
 }
  
