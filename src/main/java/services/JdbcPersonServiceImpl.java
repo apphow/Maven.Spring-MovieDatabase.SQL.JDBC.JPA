@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JdbcPersonServiceImpl {
+public class JdbcPersonServiceImpl implements PersonService{
 
     private PersonRepository personRepository;
 
